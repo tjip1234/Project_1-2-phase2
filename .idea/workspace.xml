@@ -4,37 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87ea7c2a-c6c6-4a47-a2c1-263bcb72959e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Ball.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Gui/GolfBall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Gui/GolfMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Gui/RemoteControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/AdamsBashForth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/BackwardsEuler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/Derivative.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/Euler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/HelperFunctions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/OdeSolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/PhysicsEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/RungeKutta2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/RungeKutta4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/mathFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/semImplicitEuler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/test_Math.java" afterDir="false" />
+    <list default="true" id="87ea7c2a-c6c6-4a47-a2c1-263bcb72959e" name="Changes" comment="commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Math/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,6 +134,14 @@
       <option name="presentableId" value="Default" />
       <updated>1651559959023</updated>
     </task>
+    <task id="LOCAL-00001" summary="commit">
+      <created>1652176795416</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652176795416</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -173,5 +154,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>
