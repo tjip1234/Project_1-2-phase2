@@ -4,7 +4,7 @@ import static Math.Main.friction;
 import static Math.Main.gravity;
 
 public class RungeKutta2 implements OdeSolver{
-    State state;
+    State state = null;
 
     double h;
     public RungeKutta2(State state, double h){

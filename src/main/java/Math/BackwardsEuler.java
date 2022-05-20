@@ -18,6 +18,7 @@ public class BackwardsEuler implements OdeSolver {
         double vyn = state.vy + h * helper.beginYCalculator(estimateState.x, estimateState.y, estimateState.vx, estimateState.vy);
         double xn = h * state.vx + state.vx;
         double yn = h * state.vy + state.vy;
-        return new State(xn,yn,vxn,vyn);
+        state = new State(xn,yn,vxn,vyn);
+        return state;
     }
 }

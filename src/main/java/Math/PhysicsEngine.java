@@ -1,5 +1,7 @@
 package Math;
 
+import java.util.LinkedList;
+
 public class PhysicsEngine extends mathFunction{
     public static double gravity = 9.81;
     public static double StaticFriction = 0.2;
@@ -7,33 +9,52 @@ public class PhysicsEngine extends mathFunction{
     public static double friction = 0.08;
     //public static final double real = 1.359157322;
     public static final double real = 0.817278119005946;
-    public static final double xt = 4;
-    public static final double yt = 1;
+    public static final double xt = -3;
+    public static final double yt = -1;
     public static final double r = 0.15;
     //public double h = 0.45;
-    public  final double x0 = -3;
-    public  final double y0 = 0;
+    public  static final double x0 = 10;
+    public  static final double y0 = 10;
     public double h = 0.001;
     public double goToEuler = 0.03;
     public boolean water = false;
     public static final double endTime = 0.5;
+    public static boolean observe = false;
+    public static boolean GUI = false;
+    public LinkedList<Double> observed;
 
     public PhysicsEngine(double h){
     this.h = h;
     }
- public double run(OdeSolver solver, State state){
+ public double run(OdeSolver solver, State state) {
             while(true) {
                 state = solver.solver();
+                //
+                if(GUI) {
+                    System.out.println(state.x + " " + state.y);
+                    ConnectionGUI.updateBall(state.x, state.y);
+                    try {
+                        Thread.sleep(10);
+                    }
+                    catch(Exception e){
+
+                    }
+                }
+                if (observe){
+                    observed.add(distanceHole(state));
+                }
                 if (mathFunction.Function(state.x, state.y) < 0) {
+                    //System.out.println(state.x + " " + state.y);
                     water = true;
                     return distanceHole(state);
                 }
                 if (inHole(state)) {
-                    System.out.println("hit");
+                    //System.out.println("hit");
                     return 0;
                 }
                 if (Stop(state, h)) {
                     if (StopComplete(state.x, state.y, h)) {
+                        //System.out.println(state.x + " " + state.y);
                         return distanceHole(state);
                     }
                 }
@@ -55,6 +76,7 @@ public class PhysicsEngine extends mathFunction{
             if(StaticFriction > Math.sqrt(Math.pow(helper.derivativeOf(X,Y,'x'), 2) + Math.pow(helper.derivativeOf(X,Y,'y'), 2))){
                 return true;
             }
+
         //}
         return false;
     }

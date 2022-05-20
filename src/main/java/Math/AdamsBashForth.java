@@ -6,11 +6,10 @@ import static Math.Main.gravity;
 public class AdamsBashForth implements OdeSolver {
     State[] previousStates;
     double h;
-    public AdamsBashForth(State previousStates[], double h){
+    public AdamsBashForth(State[] previousStates, double h){
         this.previousStates = previousStates;
         this.h = h;
     }
-
     @Override
     public State solver() {
         HelperFunctions helper = new HelperFunctions(gravity, friction);

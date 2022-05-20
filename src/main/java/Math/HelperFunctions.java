@@ -29,8 +29,14 @@ public class HelperFunctions {
         double y = state.y;
         double vx = state.vx;
         double vy = state.vy;
+        double xThing;
+        if (vx == 0 && vy == 0) {
+            xThing = (-gravity*derivativeOf(x,y,'x')) - (friction*gravity*derivativeOf(x,y,'x'))/(Math.sqrt(Math.pow(derivativeOf(x,y,'x'), 2) + Math.pow(derivativeOf(x,y,'y'), 2)));
 
-        double xThing = (-gravity*derivativeOf(x,y,'x')) - (friction*gravity*vx)/(Math.sqrt(Math.pow(vx, 2) + Math.pow(vy, 2)));
+        }
+        else{
+            xThing = (-gravity*derivativeOf(x,y,'x')) - (friction*gravity*vx)/(Math.sqrt(Math.pow(vx, 2) + Math.pow(vy, 2)));
+        }
         return xThing;
     }
     public double accelerationY(State state){
@@ -38,9 +44,16 @@ public class HelperFunctions {
         double y = state.y;
         double vx = state.vx;
         double vy = state.vy;
+        double yThing;
+        if (vx == 0 && vy == 0) {
+            yThing = (-gravity*derivativeOf(x,y,'y')) - (friction*gravity*derivativeOf(x,y,'y'))/(Math.sqrt(Math.pow(derivativeOf(x,y,'x'), 2) + Math.pow(derivativeOf(x,y,'y'), 2)));
 
-        double yThing = (-gravity*derivativeOf(x,y,'y')) - (friction*gravity*vy)/(Math.sqrt(Math.pow(vx, 2) + Math.pow(vy, 2)));
+        }
+        else{
+            yThing = (-gravity*derivativeOf(x,y,'y')) - (friction*gravity*vy)/(Math.sqrt(Math.pow(vx, 2) + Math.pow(vy, 2)));
+        }
         return yThing;
+
     }
     public double derivativeOf(double x, double y, char withrespectto){
         double derivativestep = 1E-6;
