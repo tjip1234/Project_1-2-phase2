@@ -12,8 +12,6 @@ public class test_Math {
         assertEquals(5.0/4.7,n.dvx);
         assertEquals(6.0/4.7,n.dvy);
     }
-    public void RungeKutta2test(){
 
-    }
 
 }

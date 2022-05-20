@@ -93,6 +93,7 @@ public class RemoteControl extends Application
             @Override
             public void handle(ActionEvent event) {
                 boolean switchdd = true;
+
                 Main runMain = new Main();
                 Thread n = new Thread(runMain);
                 n.start();

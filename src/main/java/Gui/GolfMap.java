@@ -23,6 +23,7 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
 import Math.PhysicsEngine;
+import Math.mathFunction;
 public class GolfMap extends Application implements Runnable
 {
 
@@ -47,9 +48,7 @@ public class GolfMap extends Application implements Runnable
     public static Scene scene2;
     public static Stage stage;
     public static GridPane gridPane;
-    public static double function(double x, double y){
-        return 0.4*(0.9 - Math.exp( - (x * x + y * y) / 8.0) );
-    }
+
     SmartGroup group;
     @Override
 
@@ -62,7 +61,7 @@ public class GolfMap extends Application implements Runnable
         displayPane.setPrefSize(FRAME_WIDTH, FRAME_HEIGHT);
 
         StackPane root = new StackPane();
-
+        
         group = new SmartGroup();
         SmartGroup group2 = new SmartGroup();
         this.gridPane = new GridPane();
@@ -91,8 +90,8 @@ public class GolfMap extends Application implements Runnable
 
         for (double i = lowerBoundx; i < upperBoundx; i = i + 0.1) {
             for (double j = lowerBoundy; j < upperBoundy; j = j + 0.1) {
-                maxHeight = Math.max(maxHeight, function(i, j));
-                minHeight = Math.min(minHeight, function(i, j));
+                maxHeight = Math.max(maxHeight, mathFunction.Function(i, j));
+                minHeight = Math.min(minHeight, mathFunction.Function(i, j));
             }
         }
 
@@ -104,7 +103,7 @@ public class GolfMap extends Application implements Runnable
                 Box box = new Box(0.1, 0.1, 0.1);
                 box.translateXProperty().set(i);
                 box.translateYProperty().set(j);
-                box.translateZProperty().set(function(i, j));
+                box.translateZProperty().set(mathFunction.Function(i, j));
 
                 if (box.getTranslateZ() <= 0) {
                     box.setMaterial(blue);
@@ -124,10 +123,11 @@ public class GolfMap extends Application implements Runnable
 
         }
 //        Sphere sphere = new Sphere(0.1, 1);
+
         GolfBall.ball.setRadius(0.4);
         GolfBall.ball.translateXProperty().set(PhysicsEngine.x0);
         GolfBall.ball.translateYProperty().set(PhysicsEngine.y0);
-        GolfBall.ball.translateZProperty().set(function(PhysicsEngine.x0, PhysicsEngine.y0) + 0.45);
+        GolfBall.ball.translateZProperty().set(mathFunction.Function(PhysicsEngine.x0, PhysicsEngine.y0) + 0.45);
         group.getChildren().add(GolfBall.ball);
         //group.getChildren().add(button);
         //group.getChildren().add(prepareImageView());
