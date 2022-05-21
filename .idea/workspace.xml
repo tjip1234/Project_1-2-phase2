@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ea7c2a-c6c6-4a47-a2c1-263bcb72959e" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Bots/HillClimb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gui/GolfMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gui/GolfMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gui/RemoteControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gui/RemoteControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Math/GraphODE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/GraphODE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/PhysicsEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/PhysicsEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test_Math.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_Math.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +51,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.google.cloudcode.ide_session_index": "20220520_0003",
+    "com.google.cloudcode.ide_session_index": "20220521_0000",
     "last_opened_file_path": "/home/rafael/Documents/uni/project1-2/Project_1-2-phase2/src/main/java/Bots",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -73,7 +70,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.GraphODE">
     <configuration name="GraphODE" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Math.GraphODE" />
       <module name="Project_1-2-phase2.main" />

@@ -21,7 +21,7 @@ public class PhysicsEngine extends mathFunction{
     public static final double endTime = 0.5;
     public static boolean observe = false;
     public static boolean GUI = false;
-    public LinkedList<Double> observed;
+    public LinkedList<State> observed;
 
     public PhysicsEngine(double h){
     this.h = h;
@@ -41,7 +41,7 @@ public class PhysicsEngine extends mathFunction{
                     }
                 }
                 if (observe){
-                    observed.add(distanceHole(state));
+                    observed.add(new State(state.x,state.y,state.vx,state.vy));
                 }
                 if (mathFunction.Function(state.x, state.y) < 0) {
                     //System.out.println(state.x + " " + state.y);

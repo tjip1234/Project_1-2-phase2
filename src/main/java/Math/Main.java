@@ -12,9 +12,9 @@ public class Main implements Runnable{
     public static double StaticFriction = 0.2;
     public static double mass = 0.056;
     public static double friction = 0.08;
-    public static double h = 0.01;
+    public static double h = 0.0005;
     public static void main(String[] args) throws FileNotFoundException {
-        Bots h = new HillClimb();
+        Bots h = new ParticleSwarm();
         h.increaseAccuracy(1);
         h.botrun();
         //State state = new State( -3,0,3.320626288191713, 1.3073992549590585);
