@@ -62,6 +62,11 @@ public class ParticleSwarm implements Bots{
                 Particle.bestFitness = calcFitness(currentBest);   //TODO optimize this, don't measure it twice
                 groupBest = currentBest;
             }
+
+            if (calcFitness(groupBest) < PhysicsEngine.r){
+            System.out.println(Arrays.toString(Particle.groupBest) + " fitness: " + Particle.bestFitness + " particleSwarm");
+                return new State(PhysicsEngine.x0,PhysicsEngine.y0, groupBest[0],groupBest[1]);
+            }
             //TODO STOP SEARCHING FOR BEST GROUP BEST LIKE IT'S AN EGG U HAVE TO FIND GROUP BEST AND THEN COMPARE IT TO OLD GROUP BEST YOU DONKEY
             //System.out.println(Particle.bestFitness + ", " + t + ", ParticleSwarm");
             Particle.bestFitness = calcFitness(groupBest);

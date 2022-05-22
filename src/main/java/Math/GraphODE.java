@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class GraphODE {
     public static void write() {
 
-        int numberOdes = 5;
+        int numberOdes = 6;
         double h = Main.h;
         State[][] arrays = new State[numberOdes][0];
         PhysicsEngine engine;
@@ -27,6 +27,7 @@ public class GraphODE {
         odes[2] = new RungeKutta2(new State(PhysicsEngine.x0,PhysicsEngine.y0,4,2), h);
         odes[3] = new RungeKutta4(new State(PhysicsEngine.x0,PhysicsEngine.y0,4,2), h);
         odes[4] = new semImplicitEuler(new State(PhysicsEngine.x0,PhysicsEngine.y0,4,2), h);
+        odes[5] = new ImprovedEuler(new State(PhysicsEngine.x0,PhysicsEngine.y0,4,2), h);
         for (int i = 0; i < numberOdes; i++) {
             state = new State(PhysicsEngine.x0,PhysicsEngine.y0,4,2);
             engine = new PhysicsEngine(h);

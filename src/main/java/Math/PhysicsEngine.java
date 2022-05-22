@@ -22,11 +22,13 @@ public class PhysicsEngine extends mathFunction{
     public static boolean observe = false;
     public static boolean GUI = false;
     public LinkedList<State> observed;
+    public static int HitCounter = 0;
 
     public PhysicsEngine(double h){
     this.h = h;
     }
  public double run(OdeSolver solver, State state) {
+        HitCounter++;
             while(true) {
                 state = solver.solver();
                 //

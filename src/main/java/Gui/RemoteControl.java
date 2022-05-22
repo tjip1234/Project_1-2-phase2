@@ -1,5 +1,9 @@
 package Gui;
 
+import Bots.HillClimb;
+import Bots.HillClimbImproved;
+import Bots.ParticleSwarm;
+import Bots.RuleBOt;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -27,7 +31,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import Math.Main;
+import Math.*;
 import static Gui.GolfMap.coordinatex;
 import static Gui.GolfMap.coordinatey;
 
@@ -93,7 +97,7 @@ public class RemoteControl extends Application
             @Override
             public void handle(ActionEvent event) {
                 boolean switchdd = true;
-
+                //int
                 Main runMain = new Main();
                 Thread n = new Thread(runMain);
                 n.start();
@@ -258,10 +262,10 @@ public class RemoteControl extends Application
 //        root.getChildren().add(rr);
 
         ToggleGroup rr = new ToggleGroup();
-        RadioButton rr1 = new RadioButton("EULER");
-        RadioButton rr2 = new RadioButton("SI EULER");
-        RadioButton rr3 = new RadioButton("RUNGEKUTTA  ");
-        RadioButton rr4 = new RadioButton("RUNGEKUTTA4  ");
+        RadioButton rr1 = new RadioButton("HillCLimber");
+        RadioButton rr2 = new RadioButton("HillClimberImproved");
+        RadioButton rr3 = new RadioButton("RuleBased");
+        RadioButton rr4 = new RadioButton("ParticleSwarm");
         rr1.setTextFill(Color.BLACK);
         rr2.setTextFill(Color.BLACK);
         rr3.setTextFill(Color.BLACK);
@@ -282,6 +286,38 @@ public class RemoteControl extends Application
         root.getChildren().add(rr2);
         root.getChildren().add(rr3);
         root.getChildren().add(rr4);
+        rr1.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
+                if (isNowSelected) {
+                    Main.usedBot = new HillClimb();
+                }
+            }
+        });
+        rr2.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
+                if (isNowSelected) {
+                    Main.usedBot = new HillClimbImproved();
+                }
+            }
+        });
+        rr3.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
+                if (isNowSelected) {
+                    Main.usedBot = new RuleBOt();
+                }
+            }
+        });
+        rr4.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
+                if (isNowSelected) {
+                    Main.usedBot = new ParticleSwarm();
+                }
+            }
+        });
 
 
 
