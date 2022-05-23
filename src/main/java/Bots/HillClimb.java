@@ -34,7 +34,7 @@ public class HillClimb implements Bots{
             while (!converged) {
                 double[][] moves = new double[4][2]; //TODO dimensionality change here left right up down // also possibly increase numb of moves?
                 moves[0] = makeMove(randomPosition,1.0, 0.0);
-                moves[1] = makeMove(randomPosition, 1.0, 0.0);
+                moves[1] = makeMove(randomPosition, -1.0, 0.0);
                 moves[2] = makeMove(randomPosition, 0.0, 1.0);
                 moves[3] = makeMove(randomPosition, 0.0, -1.0);
                 converged = true;

@@ -43,6 +43,8 @@ public class RemoteControl extends Application
     public RadioButton r1 = new RadioButton("ME        ");
     public RadioButton r2 = new RadioButton("BOT");
     public static Stage newStage;
+    public static Slider dislider;
+    public static Slider slider;
     GolfMap m;
 
     @Override
@@ -176,9 +178,15 @@ public class RemoteControl extends Application
             @Override
             public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
                 if (isNowSelected) {
-                    // ...
-                } else {
-                    // ...
+                    Main.usebot = false;
+                }
+            }
+        });
+        r1.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
+                if (isNowSelected) {
+                    Main.usebot = true;
                 }
             }
         });
@@ -262,7 +270,7 @@ public class RemoteControl extends Application
 //        root.getChildren().add(rr);
 
         ToggleGroup rr = new ToggleGroup();
-        RadioButton rr1 = new RadioButton("HillCLimber");
+        RadioButton rr1 = new RadioButton("HillClimber");
         RadioButton rr2 = new RadioButton("HillClimberImproved");
         RadioButton rr3 = new RadioButton("RuleBased");
         RadioButton rr4 = new RadioButton("ParticleSwarm");
@@ -270,13 +278,13 @@ public class RemoteControl extends Application
         rr2.setTextFill(Color.BLACK);
         rr3.setTextFill(Color.BLACK);
         rr4.setTextFill(Color.BLACK);
-        rr1.setLayoutX(110);
+        rr1.setLayoutX(80);
         rr1.setLayoutY(370);
-        rr2.setLayoutX(110);
+        rr2.setLayoutX(80);
         rr2.setLayoutY(400);
-        rr3.setLayoutX(190);
+        rr3.setLayoutX(250);
         rr3.setLayoutY(370);
-        rr4.setLayoutX(190);
+        rr4.setLayoutX(250);
         rr4.setLayoutY(400);
         rr1.setToggleGroup(rr);
         rr2.setToggleGroup(rr);
@@ -408,7 +416,7 @@ public class RemoteControl extends Application
 //        root.getChildren().add(label5);
 
         //SLIDER
-        Slider dislider = new Slider();
+        dislider = new Slider();
         dislider.setMin(0);
         dislider.setMax(360);
         dislider.setValue(0);
@@ -465,7 +473,7 @@ public class RemoteControl extends Application
         root.getChildren().add(label4);
 
         //SLIDER
-        Slider slider = new Slider();
+        slider = new Slider();
         slider.setMin(0);
         slider.setMax(100);
         slider.setValue(40);

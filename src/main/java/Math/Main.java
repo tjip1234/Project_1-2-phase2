@@ -2,6 +2,9 @@ package Math;
 
 import Bots.*;
 import Gui.GolfBall;
+import Gui.GolfMap;
+import Gui.RemoteControl;
+import javafx.application.Application;
 
 import java.io.FileNotFoundException;
 
@@ -13,6 +16,7 @@ public class Main implements Runnable{
     public static double friction = 0.08;
     public static double h = 0.001;
     public static Bots usedBot = new HillClimbImproved();
+    public static boolean usebot = false;
 
     public static void main(String[] args) throws FileNotFoundException {
         Bots h = new HillClimbImproved();
@@ -28,13 +32,29 @@ public class Main implements Runnable{
 
     @Override
     public void run() {
-        State result = usedBot.botrun();
-        PhysicsEngine.GUI = true;
-        PhysicsEngine engine = new PhysicsEngine(h);
-        OdeSolver RungeKutta4 = new RungeKutta4(result, h);
-        engine.run(RungeKutta4, result);
-        System.out.println(" X:"+ GolfBall.X + " Y:" + GolfBall.Y);
-        System.out.println(usedBot.getClass());
+        if (usebot) {
+            State result = usedBot.botrun();
+            PhysicsEngine.GUI = true;
+            PhysicsEngine engine = new PhysicsEngine(h);
+            OdeSolver RungeKutta4 = new RungeKutta4(result, h);
+            engine.run(RungeKutta4, result);
+            System.out.println(" X:" + result.x + " Y:" + result.y + " VX:" + result.vx + " VY:"+ result.vy);
+            System.out.println(PhysicsEngine.HitCounter);
+            System.out.println(usedBot.getClass());
 
+        }
+        else {
+            State hit = new State(GolfBall.ball.translateXProperty().getValue(),GolfBall.ball.translateYProperty().getValue(),Math.cos(Math.toRadians(RemoteControl.dislider.getValue()))*(RemoteControl.slider.getValue()/20),Math.sin(Math.toRadians(RemoteControl.dislider.getValue()))*(RemoteControl.slider.getValue()/20));
+            System.out.println(hit.vx+" "+hit.vy);
+            PhysicsEngine.GUI = true;
+            PhysicsEngine engine = new PhysicsEngine(h);
+            OdeSolver RungeKutta4 = new RungeKutta4(hit, h);
+            engine.run(RungeKutta4, hit);
+
+            System.out.println(" X:" + GolfBall.X + " Y:" + GolfBall.Y);
+
+
+
+        }
     }
 }

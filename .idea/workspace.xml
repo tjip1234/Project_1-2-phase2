@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ea7c2a-c6c6-4a47-a2c1-263bcb72959e" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Bots/HillClimbImproved.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Math/ImprovedEuler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bots/HillClimb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bots/HillClimb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bots/ParticleSwarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bots/ParticleSwarm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gui/RemoteControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gui/RemoteControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/BackwardsEuler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/BackwardsEuler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/GraphODE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/GraphODE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/PhysicsEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/PhysicsEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Math/mathFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/mathFunction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653049723566</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit">
+      <created>1653249901342</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653249901342</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -259,11 +260,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="5" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Bots/HillClimbImproved.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
