@@ -9,11 +9,11 @@ public class PhysicsEngine extends mathFunction{
     public static double friction = 0.08;
     //public static final double real = 1.359157322;
     public static final double real = 0.817278119005946;
-    public static final double xt = 1;
+    public static final double xt = 4;
     public static final double yt = 1;
     public static final double r = 0.15;
     //public double h = 0.45;
-    public  static final double x0 = 0;
+    public  static final double x0 = -3;
     public  static final double y0 = 0;
     public double h = 0.001;
     public double goToEuler = 0.03;
@@ -36,7 +36,7 @@ public class PhysicsEngine extends mathFunction{
                     //System.out.println(state.x + " " + state.y);
                     ConnectionGUI.updateBall(state.x, state.y);
                     try {
-                        Thread.sleep(10);
+                        Thread.sleep((long) (1000*Main.h));
                     }
                     catch(Exception e){
 
@@ -45,6 +45,7 @@ public class PhysicsEngine extends mathFunction{
                 if (observe){
                     observed.add(new State(state.x,state.y,state.vx,state.vy));
                 }
+
                 if (mathFunction.Function(state.x, state.y) < 0) {
                     //System.out.println(state.x + " " + state.y);
                     water = true;
@@ -62,13 +63,7 @@ public class PhysicsEngine extends mathFunction{
                 }
             }
     }
-    public boolean StopRK(State state){
-        //TODO WHEN ONLY ONE IS AT 0 SET IT TO 0
-           if(Math.abs(state.vx) != state.vx ){ //TODO ADD vy
-                return true;
-           }
-           return false;
-        }
+
     public boolean StopComplete(double X, double Y, double h){
         // if((derivativeOf(X,Y,'x') ==  0) && (derivativeOf(X,Y,'y') == 0) || (Math.abs(derivativeOf(X, Y,'x'))  - h < 0) && (Math.abs(derivativeOf(X, Y,'y')) - h < 0 )){ // range
         //     return true;
@@ -85,16 +80,7 @@ public class PhysicsEngine extends mathFunction{
     public boolean Stop(State state,double h){
         return Math.sqrt(state.vx*state.vx + state.vy * state.vy) < h;
     }
-    public boolean stopVector(State old, State current){
-        return old.vx * current.vx + old.vy * current.vy < 0;
-    }
-    public boolean overShoot(State state, double h){
-        return state.vx < 0; //TODO change this, doesn't take every case lul
-    }
-    public boolean smallStop(State state, double h){
-        double errorBound = 1E-8;
-        return Math.abs(state.vx) < errorBound;
-    }
+
     public boolean inHole(State state){
         return Math.abs(distanceHole(state)) < r;
     }

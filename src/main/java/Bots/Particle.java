@@ -15,22 +15,22 @@ public class Particle {
     public static double[] groupBest;
     public static double bestFitness;
     public double individualBestFitness;
-    public static final double upperBound = 5; //TODO ask Tin if Math.max(Physics.x0, Physics.xt) is a good idea
+    public static final double upperBound = 5;
     public static final double lowerBound = -5;
-    public static final double step =  0.1;
+    public static final double step =  1;
 
     public double fitness;
     // search calibrators
     //double inertiaWeight = 0.5;
     //double indComp = 0.2;
     //double socComp = 0.3;
-    // public static  double inertiaWeight = 0.3925;
-    // public static final double indComp = 2.5586;
-    // public static final double socComp = 1.3358;
+     public static  double inertiaWeight = 0.3925;
+    public static final double indComp = 2.5586;
+     public static final double socComp = 1.3358;
 
-    public static  double inertiaWeight = 0.5;
-    public static  double indComp = 1.55;
-    public static final double socComp = 1.55; //1.55 together maybe? the sum
+    //public static  double inertiaWeight = 0.5;
+    //public static  double indComp = 1.55;
+    //public static final double socComp = 1.55; //1.55 together maybe? the sum
     public static int fitnessEvaluations;
     // decreasing number through iterations
         

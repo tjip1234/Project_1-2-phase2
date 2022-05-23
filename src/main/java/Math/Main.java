@@ -14,15 +14,30 @@ public class Main implements Runnable{
     public static double StaticFriction = 0.2;
     public static double mass = 0.056;
     public static double friction = 0.08;
-    public static double h = 0.001;
+    public static double h = 0.01;
     public static Bots usedBot = new HillClimbImproved();
     public static boolean usebot = false;
 
     public static void main(String[] args) throws FileNotFoundException {
-        Bots h = new HillClimbImproved();
-        h.increaseAccuracy(1);
-        h.botrun();
-        System.out.println(PhysicsEngine.HitCounter);
+        Bots bot[] = new Bots[6];
+        bot[0] = new HillClimbImproved();
+        bot[1] = new HillClimb();
+        bot[2] = new CuckooSearch();
+        bot[3] = new RuleBOt();
+        bot[4] = new ParticleSwarm();
+        bot[5] = new RandomBot();
+        String result = "";
+
+        for (int i = 0; i < bot.length; i++) {
+            double begin = System.nanoTime();
+            bot[i].botrun();
+            double end = System.nanoTime();
+            double time = end - begin;
+            result += ", " +PhysicsEngine.HitCounter +" time: "+ time;
+            PhysicsEngine.HitCounter = 0;
+        }
+
+        System.out.println(result);
 
         //State state = new State( -3,0,3.320626288191713, 1.3073992549590585);
         //OdeSolver solver = new RungeKutta2(state,0.001);

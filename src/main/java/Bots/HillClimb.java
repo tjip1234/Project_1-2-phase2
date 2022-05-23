@@ -45,6 +45,7 @@ public class HillClimb implements Bots{
                     double[] move = moves[i];
                     double moveFitness = calcFitness(move);
                     numberOfEval++;
+
                     //System.out.println("move fitness: " + moveFitness);
                     if (moveFitness <= 0.15) {
                         done = true;

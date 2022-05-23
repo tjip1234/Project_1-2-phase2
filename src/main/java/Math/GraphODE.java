@@ -39,7 +39,7 @@ public class GraphODE {
         System.out.println(Arrays.deepToString(arrays));
         List<String> list = new LinkedList<String>();
         double hk = 0;
-        for (int k = 0; k < arrays[0].length; k++) {
+        for (int k = 0; k < arrays[0].length +1000; k++) {
             String rs = "";
             for (int i = 0; i < arrays.length; i++) {
                 try {
