@@ -1,9 +1,6 @@
 package Gui;
 
-import Bots.HillClimb;
-import Bots.HillClimbImproved;
-import Bots.ParticleSwarm;
-import Bots.RuleBOt;
+import Bots.*;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -252,7 +249,7 @@ public class RemoteControl extends Application
 //        root.getChildren().add(rr);
 
         ToggleGroup rr = new ToggleGroup();
-        RadioButton rr1 = new RadioButton("HILL-CLIMBER");
+        RadioButton rr1 = new RadioButton("RANDOM");
         RadioButton rr2 = new RadioButton("RULE-BASED");
         RadioButton rr3 = new RadioButton("HILL-CLIMBER-IMPROVED");
         RadioButton rr4 = new RadioButton("PARTICLE-SWARM");
@@ -284,7 +281,7 @@ public class RemoteControl extends Application
             @Override
             public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
                 if (isNowSelected) {
-                    Main.usedBot = new HillClimb();
+                    Main.usedBot = new RandomBot();
                 }
             }
         });
