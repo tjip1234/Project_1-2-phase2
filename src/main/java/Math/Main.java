@@ -49,10 +49,12 @@ public class Main implements Runnable{
     public void run() {
         if (usebot) {
             State result = usedBot.botrun();
+            System.out.println("vx:" + result.vx +" vy :" + result.vy);
             PhysicsEngine.GUI = true;
             PhysicsEngine engine = new PhysicsEngine(h);
             OdeSolver RungeKutta4 = new RungeKutta4(result, h);
             engine.run(RungeKutta4, result);
+
             System.out.println(" X:" + result.x + " Y:" + result.y + " VX:" + result.vx + " VY:"+ result.vy);
             System.out.println(PhysicsEngine.HitCounter);
             System.out.println(usedBot.getClass());

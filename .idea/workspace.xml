@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ea7c2a-c6c6-4a47-a2c1-263bcb72959e" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/boxik.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Maze/MazeCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Maze/Tuple.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bots/HillClimb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bots/HillClimb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bots/Particle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bots/Particle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bots/HillClimbImproved.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bots/HillClimbImproved.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bots/ParticleSwarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bots/ParticleSwarm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gui/RemoteControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gui/RemoteControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/GraphODE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/GraphODE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/PhysicsEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/PhysicsEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/mathFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/mathFunction.java" afterDir="false" />
@@ -57,8 +55,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.google.cloudcode.ide_session_index": "20220523_0001",
-    "last_opened_file_path": "/home/rafael/Documents/uni/project1-2/Project_1-2-phase2/src/main/resources",
+    "com.google.cloudcode.ide_session_index": "20220607_0000",
+    "last_opened_file_path": "/home/rafael/Downloads/baboon_-_classified (1)",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -216,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653144040596</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="commit">
+      <created>1653329162057</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653329162057</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

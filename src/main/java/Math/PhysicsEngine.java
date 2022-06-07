@@ -11,7 +11,7 @@ public class PhysicsEngine extends mathFunction{
     public static final double real = 0.817278119005946;
     public static final double xt = 4;
     public static final double yt = 1;
-    public static final double r = 0.15;
+    public static final double r = 0.05;
     //public double h = 0.45;
     public  static final double x0 = -3;
     public  static final double y0 = 0;

@@ -29,7 +29,7 @@ public class HillClimbImproved implements Bots{
                         break;
                     default:
                         if (increase < Double.MIN_VALUE){
-                            increase = 5-currentState.vx-currentState.vy;
+                            increase = 5-Math.max(currentState.vx,currentState.vy);
                             if (increase < 0){
                                 throw new RuntimeException("incrase smaller then 0");
                             }
