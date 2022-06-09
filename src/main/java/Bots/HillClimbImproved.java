@@ -42,6 +42,9 @@ public class HillClimbImproved implements Bots{
                 direction++;
                 nextDistance = calculateFitness(new State(nextState.x,nextState.y, nextState.vx, nextState.vy));
             }
+            if (PhysicsEngine.observe3) {
+                PhysicsEngine.distances.add(nextDistance);
+            }
             currentState = nextState;
             currentDistance = nextDistance;
         }

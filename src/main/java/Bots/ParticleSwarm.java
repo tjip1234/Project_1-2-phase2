@@ -61,6 +61,9 @@ public class ParticleSwarm implements Bots{
             if (calcFitness(currentBest) < Particle.bestFitness) {
                 Particle.bestFitness = calcFitness(currentBest);   //TODO optimize this, don't measure it twice
                 groupBest = currentBest;
+                if (PhysicsEngine.observe3) {
+                    PhysicsEngine.distances.add(Particle.bestFitness);
+                }
             }
 
             if (calcFitness(groupBest) < PhysicsEngine.r){

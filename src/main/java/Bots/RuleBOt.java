@@ -18,6 +18,9 @@ public class RuleBOt implements Bots {
                     min=distance;
                     minvx = vx;
                     minvy = vy;
+                    if (PhysicsEngine.observe3) {
+                        PhysicsEngine.distances.add(min);
+                    }
                 }
 
             }

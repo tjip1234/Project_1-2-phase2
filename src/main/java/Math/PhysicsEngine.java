@@ -20,8 +20,11 @@ public class PhysicsEngine extends mathFunction{
     public boolean water = false;
     public static final double endTime = 0.5;
     public static boolean observe = false;
+    public static boolean observe2 = false;
+    public static boolean observe3 = false;
     public static boolean GUI = false;
     public LinkedList<State> observed;
+    public static LinkedList<Double> distances;
     public static int HitCounter = 0;
 
     public PhysicsEngine(double h){
@@ -45,19 +48,27 @@ public class PhysicsEngine extends mathFunction{
                 if (observe){
                     observed.add(new State(state.x,state.y,state.vx,state.vy));
                 }
-
                 if (mathFunction.Function(state.x, state.y) < 0) {
                     //System.out.println(state.x + " " + state.y);
                     water = true;
+                    if (observe2){
+                        distances.add(distanceHole(state));
+                    }
                     return distanceHole(state);
                 }
                 if (inHole(state)) {
                     //System.out.println("hit");
+                    if (observe2){
+                        distances.add(distanceHole(state));
+                    }
                     return 0;
                 }
                 if (Stop(state, h)) {
                     if (StopComplete(state.x, state.y, h)) {
                         //System.out.println(state.x + " " + state.y);
+                        if (observe2){
+                            distances.add(distanceHole(state));
+                        }
                         return distanceHole(state);
                     }
                 }

@@ -17,7 +17,7 @@ public class RungeKutta4 implements OdeSolver{
     public State solver() {
         HelperFunctions helper = new HelperFunctions(gravity, friction);
         Derivative a, b, c, d = new Derivative(0, 0, 0, 0);
-        a = helper.evaluate(state, 0.0, new Derivative(0, 0, 0, 0)); // TODO do i do deriv 0
+        a = helper.evaluate(state, h, new Derivative(0, 0, 0, 0)); // TODO do i do deriv 0
         b = helper.evaluate(state, h * 0.5, a);
         c = helper.evaluate(state, h * 0.5, b);
         d = helper.evaluate(state, h, c);
