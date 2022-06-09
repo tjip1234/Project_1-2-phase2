@@ -41,10 +41,10 @@ public class Main implements Runnable{
             solvers[1] = new RungeKutta2(start, h*0.1);
             solvers[0] = new RungeKutta4(start, h*0.1);
             solvers[4] = new ImprovedEuler(start, h*0.1);
-            for (int j = 0; j < 10 / (h*0.1); j++) {
+            for (int j = 0; j < 100 / (h*0.1); j++) {
                 stateEnd[i] = solvers[i].solver();
             }
-            for (int k = 0; k < 5; k++) {
+            for (int k = 0; k < 10; k++) {
 
                 start = new State(2, 0, 2, 2);
                 solvers[3] = new BackwardsEuler(start, h);
@@ -60,9 +60,9 @@ public class Main implements Runnable{
                     strings.add(" " + Math.abs((state[k][0].vx - state[k][i].vx) + (state[k][0].vy - state[k][i].vy)));
                 }
                 else {
-                    strings.add(" " + Math.abs((stateEnd[i].vx - state[k][i].vx) + (stateEnd[i].vy - state[k][i].vy)));
+                    strings.add(" " + Math.sqrt(Math.pow((stateEnd[0].vx - state[k][i].vx),2) + Math.pow((stateEnd[0].vy - state[k][i].vy),2)));
                 }
-                h *= 10;
+                h *= 5;
             }
             h = 0.000001;
             try {
