@@ -21,7 +21,7 @@ public class Main implements Runnable{
     public static double StaticFriction = 0.2;
     public static double mass = 0.056;
     public static double friction = 0.08;
-    public static double h = 0.000001;
+    public static double h = 0.00001;
     public static Bots usedBot = new HillClimbImproved();
     public static boolean usebot = false;
 
@@ -29,31 +29,29 @@ public class Main implements Runnable{
         OdeSolver solvers[] = new OdeSolver[5];
 
         List<String> strings = new ArrayList<String>();
-        OdeSolver bigsolve = new RungeKutta4(new State(2,0,2,2),h*0.1);
+        strings.add("s");
         State[] stateEnd = new State[5];
-
-
         State[][] state = new State[150][solvers.length];
         for (int i = 0; i < solvers.length; i++) {
-            State start = new State(2, 0, 2, 2);
-            solvers[3] = new BackwardsEuler(start, h*0.1);
-            solvers[2] = new Euler(start, h*0.1);
-            solvers[1] = new RungeKutta2(start, h*0.1);
-            solvers[0] = new RungeKutta4(start, h*0.1);
-            solvers[4] = new ImprovedEuler(start, h*0.1);
-            for (int j = 0; j < 100 / (h*0.1); j++) {
+            State start = new State(2, 0, 4, 2);
+            solvers[3] = new BackwardsEuler(start, h*0.01);
+            solvers[2] = new Euler(start, h*0.01);
+            solvers[1] = new RungeKutta2(start, h*0.01);
+            solvers[0] = new RungeKutta4(start, h*0.01);
+            solvers[4] = new ImprovedEuler(start, h*0.01);
+            for (int j = 0; j < 10 / (h*0.01); j++) {
                 stateEnd[i] = solvers[i].solver();
             }
-            for (int k = 0; k < 10; k++) {
+            for (int k = 0; k < 5; k++) {
 
-                start = new State(2, 0, 2, 2);
+                start = new State(2, 0, 4, 2);
                 solvers[3] = new BackwardsEuler(start, h);
                 solvers[2] = new Euler(start, h);
                 solvers[1] = new RungeKutta2(start, h);
                 solvers[0] = new RungeKutta4(start, h);
                 solvers[4] = new ImprovedEuler(start, h);
 
-                for (int j = 0; j < 100 / h; j++) {
+                for (int j = 0; j < 10 / h; j++) {
                     state[k][i] = solvers[i].solver();
                 }
                 if(i == -1) {
@@ -62,9 +60,9 @@ public class Main implements Runnable{
                 else {
                     strings.add(" " + Math.sqrt(Math.pow((stateEnd[0].vx - state[k][i].vx),2) + Math.pow((stateEnd[0].vy - state[k][i].vy),2)));
                 }
-                h *= 5;
+                h *= 10;
             }
-            h = 0.000001;
+            h = 0.00001;
             try {
                 Files.write(Paths.get(System.getProperty("user.dir"), solvers[i].getClass() + ".csv"), strings, StandardOpenOption.CREATE);
 
@@ -72,6 +70,7 @@ public class Main implements Runnable{
                 e.printStackTrace();
             }
             strings = new ArrayList<String>();
+            strings.add("s");
         }
 
 
