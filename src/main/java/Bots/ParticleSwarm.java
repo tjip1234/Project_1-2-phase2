@@ -9,11 +9,11 @@ import static Bots.Particle.groupBest;
  * ParticleSwarm
  */
 public class ParticleSwarm implements Bots{
-    //public static UI ui = new UI(30, 30, 30);
+   // public static UI ui = new UI(30, 30, 30);
     // 0.3925 2.5586 1.3358 best suited for 2 dimensional low fitness eval functions
     
-    public static final int population = 50;
-    public static final int maxGeneration = 30;
+    public static final int population = 500;
+    public static final int maxGeneration = 70;
     public static final int dimensionality = 2;
     //System.out.println(bestEgg.fitness + ", " + t + ", cuckoo"); use this for research
     public static void main(String[] args) {
@@ -61,9 +61,6 @@ public class ParticleSwarm implements Bots{
             if (calcFitness(currentBest) < Particle.bestFitness) {
                 Particle.bestFitness = calcFitness(currentBest);   //TODO optimize this, don't measure it twice
                 groupBest = currentBest;
-                if (PhysicsEngine.observe3) {
-                    PhysicsEngine.distances.add(Particle.bestFitness);
-                }
             }
 
             if (calcFitness(groupBest) < PhysicsEngine.r){

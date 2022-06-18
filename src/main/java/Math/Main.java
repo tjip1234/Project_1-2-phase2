@@ -2,9 +2,7 @@ package Math;
 
 import Bots.*;
 import Gui.GolfBall;
-import Gui.GolfMap;
 import Gui.RemoteControl;
-import javafx.application.Application;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,7 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -31,12 +30,10 @@ public class Main implements Runnable{
         bot[1] = new ParticleSwarm();
         bot[2] = new RuleBOt();
         String result = "";
-        List strings = new ArrayList<String>();
-        List stringsTime = new ArrayList<String>();
-        strings.add("s");
-        stringsTime.add("s");
+        List<String> strings = new ArrayList<String>();
+        List<String> stringsTime = new ArrayList<String>();
         for (int i = 0; i < bot.length; i++) {
-            for (int j = 0; j < 15; j++) {
+            for (int j = 0; j < 25; j++) {
                 int average = 10;
                 double avgTime = 0d;
                 int avgHits = 0;
@@ -51,21 +48,28 @@ public class Main implements Runnable{
                     avgHits += PhysicsEngine.HitCounter;
                     PhysicsEngine.HitCounter = 0;
                 }
-                strings.add(""+avgHits/average);
-                stringsTime.add(""+avgTime/average);
+                System.out.println(avgHits/average);
+                System.out.println(PhysicsEngine.r);
+                strings.add(""+(avgHits/average));
+                stringsTime.add(""+(avgTime/average));
                 PhysicsEngine.HitCounter = 0;
-                PhysicsEngine.r -= 0.005;
+                PhysicsEngine.r /=1.2;
             }
             try {
+                System.out.println(Arrays.toString(strings.toArray()));
+                strings.add("s");
+                stringsTime.add("s");
+                Collections.reverse(strings);
+                Collections.reverse(stringsTime);
                 Files.write(Paths.get(System.getProperty("user.dir"), bot[i].getClass() + ".csv"), strings, StandardOpenOption.CREATE);
                 Files.write(Paths.get(System.getProperty("user.dir"), bot[i].getClass() + "Time.csv"), stringsTime, StandardOpenOption.CREATE);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             strings = new ArrayList<String>();
-            strings.add("s");
+
             stringsTime = new ArrayList<String>();
-            stringsTime.add("s");
+
         }
 
         }

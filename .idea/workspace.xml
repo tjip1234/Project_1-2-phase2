@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ea7c2a-c6c6-4a47-a2c1-263bcb72959e" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/mathplotlibBotTime.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resultsTime.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bots/HillClimbImproved.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bots/HillClimbImproved.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bots/ParticleSwarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bots/ParticleSwarm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bots/RNG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bots/RNG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bots/RuleBOt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bots/RuleBOt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/PhysicsEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/PhysicsEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/mathFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/mathFunction.java" afterDir="false" />
@@ -20,6 +26,16 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -52,25 +68,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.google.cloudcode.ide_session_index": "20220617_0001",
-    "last_opened_file_path": "/home/rafael/Documents/uni/Assignment 8",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20220523_0001&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/rafael/IdeaProjects/Project_1-2-phase2&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/java/Bots" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/Gui" />
       <recent name="$PROJECT_DIR$/src/main/java/Math" />
-      <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -171,11 +188,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GraphODE" />
-        <item itemvalue="Application.RandomBot" />
-        <item itemvalue="Application.ParticleSwarm" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.RemoteControl" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ParticleSwarm" />
+        <item itemvalue="Application.RandomBot" />
+        <item itemvalue="Application.GraphODE" />
       </list>
     </recent_temporary>
   </component>
