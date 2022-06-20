@@ -18,12 +18,13 @@ public class RuleBOt implements Bots {
                     min=distance;
                     minvx = vx;
                     minvy = vy;
+
                 }
 
             }
             
         }
-        System.out.println(min +" ," + minvx + " ," + minvy);
+       // System.out.println(min +" ," + minvx + " ," + minvy);
 
         return new State(PhysicsEngine.x0,PhysicsEngine.y0,minvx,minvy);
     }

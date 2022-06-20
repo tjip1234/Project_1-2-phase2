@@ -9,7 +9,7 @@ import static Bots.Particle.groupBest;
  * ParticleSwarm
  */
 public class ParticleSwarm implements Bots{
-    public static UI ui = new UI(30, 30, 30);
+   // public static UI ui = new UI(30, 30, 30);
     // 0.3925 2.5586 1.3358 best suited for 2 dimensional low fitness eval functions
     
     public static final int population = 500;
@@ -53,7 +53,7 @@ public class ParticleSwarm implements Bots{
                 }
             }
 
-            ui.setState(coords, groupBest);
+            //ui.setState(coords, groupBest);
             //sleep(50);
 
             particleArray = updateParticleArray(particleArray);
@@ -64,7 +64,7 @@ public class ParticleSwarm implements Bots{
             }
 
             if (calcFitness(groupBest) < PhysicsEngine.r){
-            System.out.println(Arrays.toString(Particle.groupBest) + " fitness: " + Particle.bestFitness + " particleSwarm");
+            //System.out.println(Arrays.toString(Particle.groupBest) + " fitness: " + Particle.bestFitness + " particleSwarm");
                 return new State(PhysicsEngine.x0,PhysicsEngine.y0, groupBest[0],groupBest[1]);
             }
             //TODO STOP SEARCHING FOR BEST GROUP BEST LIKE IT'S AN EGG U HAVE TO FIND GROUP BEST AND THEN COMPARE IT TO OLD GROUP BEST YOU DONKEY
@@ -75,9 +75,9 @@ public class ParticleSwarm implements Bots{
 
                                                   
         }
-        System.out.println(Particle.fitnessEvaluations + " swarmy");
-        System.out.println(Particle.bestFitness + ", " + t + ", ParticleSwarm");
-        System.out.println(Arrays.toString(Particle.groupBest) + " fitness: " + Particle.bestFitness + " particleSwarm");
+        //System.out.println(Particle.fitnessEvaluations + " swarmy");
+        //System.out.println(Particle.bestFitness + ", " + t + ", ParticleSwarm");
+        //System.out.println(Arrays.toString(Particle.groupBest) + " fitness: " + Particle.bestFitness + " particleSwarm");
         return new State(PhysicsEngine.x0, PhysicsEngine.y0,Particle.groupBest[0],Particle.groupBest[1]); //TODO ASk tin if this is okay?
         
         

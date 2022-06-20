@@ -54,7 +54,8 @@ public class RNG {
                 
                 if (fitness < bestFitness) {
                     bestFitness = fitness;
-                    bestPosition = Arrays.copyOf(randomPosition, randomPosition.length);                    
+                    bestPosition = Arrays.copyOf(randomPosition, randomPosition.length);
+
                 }
                 
                                               

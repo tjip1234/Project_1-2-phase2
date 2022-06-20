@@ -10,12 +10,12 @@ public class PhysicsEngine extends mathFunction{
     //public static final double real = 1.359157322;
     public static final double real = 0.817278119005946;
     public static final double xt = 4;
-    public static final double yt = 1;
-    public static final double r = 0.05;
+    public static final double yt = 2;
+    public static double r = 1;
     //public double h = 0.45;
-    public  static final double x0 = -3;
+    public  static final double x0 = 0;
     public  static final double y0 = 0;
-    public double h = 0.001;
+    public double h;
     public double goToEuler = 0.03;
     public boolean water = false;
     public static final double endTime = 0.5;

@@ -2,11 +2,17 @@ package Math;
 
 import Bots.*;
 import Gui.GolfBall;
-import Gui.GolfMap;
 import Gui.RemoteControl;
-import javafx.application.Application;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 
 public class Main implements Runnable{
@@ -19,31 +25,61 @@ public class Main implements Runnable{
     public static boolean usebot = false;
 
     public static void main(String[] args) throws FileNotFoundException {
-        Bots bot[] = new Bots[6];
+        Bots bot[] = new Bots[3];
         bot[0] = new HillClimbImproved();
-        bot[1] = new HillClimb();
-        bot[2] = new CuckooSearch();
-        bot[3] = new RuleBOt();
-        bot[4] = new ParticleSwarm();
-        bot[5] = new RandomBot();
+        bot[1] = new ParticleSwarm();
+        bot[2] = new RuleBOt();
         String result = "";
-
+        List<String> strings = new ArrayList<String>();
+        List<String> stringsTime = new ArrayList<String>();
         for (int i = 0; i < bot.length; i++) {
-            double begin = System.nanoTime();
-            bot[i].botrun();
-            double end = System.nanoTime();
-            double time = end - begin;
-            result += ", " +PhysicsEngine.HitCounter +" time: "+ time;
-            PhysicsEngine.HitCounter = 0;
+            for (int j = 0; j < 25; j++) {
+                int average = 10;
+                double avgTime = 0d;
+                int avgHits = 0;
+                for (int k = 0; k < average; k++) {
+                    bot[0] = new HillClimbImproved();
+                    bot[1] = new ParticleSwarm();
+                    bot[2] = new RuleBOt();
+                    double begin = System.nanoTime();
+                    bot[i].botrun();
+                    double end = System.nanoTime();
+                    avgTime += end - begin;
+                    avgHits += PhysicsEngine.HitCounter;
+                    PhysicsEngine.HitCounter = 0;
+                }
+                System.out.println(avgHits/average);
+                System.out.println(PhysicsEngine.r);
+                strings.add(""+(avgHits/average));
+                stringsTime.add(""+(avgTime/average));
+                PhysicsEngine.HitCounter = 0;
+                PhysicsEngine.r /=1.2;
+            }
+            try {
+                System.out.println(Arrays.toString(strings.toArray()));
+                strings.add("s");
+                stringsTime.add("s");
+                Collections.reverse(strings);
+                Collections.reverse(stringsTime);
+                Files.write(Paths.get(System.getProperty("user.dir"), bot[i].getClass() + ".csv"), strings, StandardOpenOption.CREATE);
+                Files.write(Paths.get(System.getProperty("user.dir"), bot[i].getClass() + "Time.csv"), stringsTime, StandardOpenOption.CREATE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            strings = new ArrayList<String>();
+
+            stringsTime = new ArrayList<String>();
+
         }
 
-        System.out.println(result);
+        }
+
 
         //State state = new State( -3,0,3.320626288191713, 1.3073992549590585);
         //OdeSolver solver = new RungeKutta2(state,0.001);
        // PhysicsEngine hf = new PhysicsEngine(0.001);
         //System.out.println(hf.run(solver,state));
-    }
+
 
     @Override
     public void run() {
@@ -58,6 +94,7 @@ public class Main implements Runnable{
             System.out.println(" X:" + result.x + " Y:" + result.y + " VX:" + result.vx + " VY:"+ result.vy);
             System.out.println(PhysicsEngine.HitCounter);
             System.out.println(usedBot.getClass());
+            PhysicsEngine.GUI = false;
 
         }
         else {
@@ -67,11 +104,8 @@ public class Main implements Runnable{
             PhysicsEngine engine = new PhysicsEngine(h);
             OdeSolver RungeKutta4 = new RungeKutta4(hit, h);
             engine.run(RungeKutta4, hit);
-
+            PhysicsEngine.GUI = false;
             System.out.println(" X:" + GolfBall.X + " Y:" + GolfBall.Y);
-
-
-
         }
     }
 }

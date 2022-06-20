@@ -4,8 +4,10 @@ public class HillClimbImproved implements Bots{
     public State currentState = new State(PhysicsEngine.x0,PhysicsEngine.y0,0,0);
     public State nextState = null;
     public double increase = 1;
+    public  double ratio;
     @Override
     public State botrun() {
+        ratio = 2.0;
         PhysicsEngine engine = new PhysicsEngine(Main.h);
 
         double nextDistance = 999999;
@@ -28,20 +30,30 @@ public class HillClimbImproved implements Bots{
                         nextState = new State(PhysicsEngine.x0,PhysicsEngine.y0,currentState.vx,currentState.vy-increase);
                         break;
                     default:
-                        if (increase < Double.MIN_VALUE){
-                            increase = 5-Math.max(currentState.vx,currentState.vy);
-                            if (increase < 0){
-                                throw new RuntimeException("incrase smaller then 0");
+                        if (increase < Double.MIN_VALUE*2){
+                            System.out.println(increase);
+                            double check = 5-currentState.vx-currentState.vy;
+                            if (check < 0){
+                                ratio = ((ratio-1)/2) +1;
+                                increase = 1;
+                                System.out.println(ratio);
+                                if (ratio <= 1.001) {
+                                    System.out.println(increase);
+                                    System.out.println(PhysicsEngine.r);
+                                    throw new RuntimeException("incrase smaller then 0");
+                                }
                             }
                             break;
                         }
-                        increase /= 2.0;
+
+                        increase /= ratio;
                         direction = 0;
                         break;
                 }
                 direction++;
                 nextDistance = calculateFitness(new State(nextState.x,nextState.y, nextState.vx, nextState.vy));
             }
+
             currentState = nextState;
             currentDistance = nextDistance;
         }
