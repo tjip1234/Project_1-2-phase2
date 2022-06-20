@@ -17,6 +17,8 @@ import java.util.List;
 
 public class Main implements Runnable{
     public static double gravity = 9.81;
+
+    public static double mass = 0.056;
     public static double friction = 0.08;
     public static double h = 0.01;
     public static Bots usedBot = new HillClimbImproved();

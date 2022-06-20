@@ -9,10 +9,10 @@ public class PhysicsEngine extends mathFunction{
     public static double StaticFriction = 0.2;
     public static double friction = 0.08;
     public static final double xt = 4;
-    public static final double yt = 2;
-    public static double r = 1;
+    public static final double yt = 4;
+    public static double r = 0.15;
     //public double h = 0.45;
-    public  static final double x0 = 0;
+    public  static final double x0 = -3;
     public  static final double y0 = 0;
     public double h ;
     public boolean water = false;
@@ -62,10 +62,6 @@ public class PhysicsEngine extends mathFunction{
                 if (mathFunction.Function(state.x, state.y) < 0) {
                     //System.out.println(state.x + " " + state.y);
                     water = true;
-                    state.x = 0;
-                    state.y = 0;
-                    state.vx = 0;
-                    state.vy = 0;
                     ConnectionGUI.updateBall(state.x, state.y);
                     return distanceHole(state);
                 }

@@ -110,7 +110,7 @@ public class GolfMap extends Application implements Runnable
 
         double heightDiff = Math.abs(maxHeight - minHeight);
 
-        Sandpit sp = new Sandpit(2, 2, 3, 3);
+        //Sandpit sp = new Sandpit(2, 2, 3, 3);
 
         System.out.println("x lower bound: "+ lowerBoundx +", y lower bound : "+ lowerBoundy);
         System.out.println("x upper bound: "+ upperBoundx +", y upper bound : "+ upperBoundy);
@@ -156,7 +156,7 @@ public class GolfMap extends Application implements Runnable
         PhongMaterial material2 = new PhongMaterial();
         material2.setDiffuseColor(Color.rgb(94, 183, 49));
 
-        Tree tree = new Tree(2, 2, 0.2, 4);
+        //Tree tree = new Tree(2, 2, 0.2, 4);
 
         for(Tree t: Tree.treeList){
             Cylinder trunky = new Cylinder(t.radius, t.height);

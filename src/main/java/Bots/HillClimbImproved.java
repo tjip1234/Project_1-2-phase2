@@ -27,9 +27,8 @@ public class HillClimbImproved implements Bots{
                             nextState = new State(PhysicsEngine.x0, PhysicsEngine.y0, currentState.vx, currentState.vy - increase);
                     default -> {
                         if (increase < Double.MIN_VALUE * 2) {
-                            System.out.println(increase);
-                            double check = 5 - currentState.vx - currentState.vy;
-                            if (check < 0) {
+                            //System.out.println(increase);
+
                                 ratio = ((ratio - 1) / 2) + 1;
                                 increase = 1;
                                 System.out.println(ratio);
@@ -38,7 +37,7 @@ public class HillClimbImproved implements Bots{
                                     System.out.println(PhysicsEngine.r);
                                     throw new RuntimeException("incrase smaller then 0");
                                 }
-                            }
+
                             break;
                         }
                         increase /= ratio;
