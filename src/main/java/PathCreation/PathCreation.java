@@ -1,5 +1,7 @@
 package PathCreation;
 
 public class PathCreation {
-    public Tuple onePoint()
+    public Tuple onePoint() {
+        return null;
+    }
 }

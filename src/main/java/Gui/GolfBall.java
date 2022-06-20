@@ -23,7 +23,7 @@ public class GolfBall
     public static double X;
     public static double Y;
     public static double Z;
-
+public static double rAdius = 0.4;
     public static Sphere ball = new Sphere();
 
     private GolfBall(double x, double y, double z)
@@ -31,6 +31,7 @@ public class GolfBall
         X = 0;
         Y = 0;
         Z = 0;
+
     }
 
     public static GolfBall createBall(double x, double y, double z)

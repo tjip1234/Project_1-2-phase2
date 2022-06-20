@@ -16,25 +16,21 @@ public class HillClimbImproved implements Bots{
         while (currentDistance > PhysicsEngine.r){
             int direction = 0;
             while (currentDistance <= nextDistance){
-                switch (direction){
-                    case 0:
-                        nextState = new State(PhysicsEngine.x0,PhysicsEngine.y0,currentState.vx+increase,currentState.vy);
-                        break;
-                    case 1:
-                        nextState = new State(PhysicsEngine.x0,PhysicsEngine.y0,currentState.vx-increase,currentState.vy);
-                        break;
-                    case 2:
-                        nextState = new State(PhysicsEngine.x0,PhysicsEngine.y0,currentState.vx,currentState.vy+increase);
-                        break;
-                    case 3:
-                        nextState = new State(PhysicsEngine.x0,PhysicsEngine.y0,currentState.vx,currentState.vy-increase);
-                        break;
-                    default:
-                        if (increase < Double.MIN_VALUE*2){
+                switch (direction) {
+                    case 0 ->
+                            nextState = new State(PhysicsEngine.x0, PhysicsEngine.y0, currentState.vx + increase, currentState.vy);
+                    case 1 ->
+                            nextState = new State(PhysicsEngine.x0, PhysicsEngine.y0, currentState.vx - increase, currentState.vy);
+                    case 2 ->
+                            nextState = new State(PhysicsEngine.x0, PhysicsEngine.y0, currentState.vx, currentState.vy + increase);
+                    case 3 ->
+                            nextState = new State(PhysicsEngine.x0, PhysicsEngine.y0, currentState.vx, currentState.vy - increase);
+                    default -> {
+                        if (increase < Double.MIN_VALUE * 2) {
                             System.out.println(increase);
-                            double check = 5-currentState.vx-currentState.vy;
-                            if (check < 0){
-                                ratio = ((ratio-1)/2) +1;
+                            double check = 5 - currentState.vx - currentState.vy;
+                            if (check < 0) {
+                                ratio = ((ratio - 1) / 2) + 1;
                                 increase = 1;
                                 System.out.println(ratio);
                                 if (ratio <= 1.001) {
@@ -45,10 +41,9 @@ public class HillClimbImproved implements Bots{
                             }
                             break;
                         }
-
                         increase /= ratio;
                         direction = 0;
-                        break;
+                    }
                 }
                 direction++;
                 nextDistance = calculateFitness(new State(nextState.x,nextState.y, nextState.vx, nextState.vy));

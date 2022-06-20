@@ -2,6 +2,7 @@ package Gui;
 import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.geometry.BoundingBox;
 import javafx.geometry.Insets;
 import javafx.scene.*;
 import javafx.scene.control.Button;
@@ -22,8 +23,14 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+
 import Math.PhysicsEngine;
 import Math.mathFunction;
+
+import static java.lang.Math.sqrt;
+
 public class GolfMap extends Application implements Runnable
 {
 
@@ -49,6 +56,10 @@ public class GolfMap extends Application implements Runnable
     public static Stage stage;
     public static GridPane gridPane;
 
+    public static BoundingBox boxic = new BoundingBox(Tree.x, Tree.y, Tree.radius, Tree.height);
+    public static BoundingBox sandboxic = new BoundingBox(Sandpit.x, Sandpit.y, Sandpit.length, Sandpit.height);
+    public static BoundingBox flagboxic = new BoundingBox(Flag.x, Flag.y, Flag.radius, Flag.height);
+
     SmartGroup group;
     @Override
 
@@ -61,7 +72,7 @@ public class GolfMap extends Application implements Runnable
         displayPane.setPrefSize(FRAME_WIDTH, FRAME_HEIGHT);
 
         StackPane root = new StackPane();
-        
+
         group = new SmartGroup();
         SmartGroup group2 = new SmartGroup();
         this.gridPane = new GridPane();
@@ -69,9 +80,11 @@ public class GolfMap extends Application implements Runnable
         this.gridPane.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));;
         displayPane.getChildren().add(this.gridPane);
 
+        PhongMaterial sandColor = new PhongMaterial();
+        sandColor.setDiffuseColor(Color.rgb(218, 145, 0));
 
         PhongMaterial blue = new PhongMaterial();
-        blue.setDiffuseColor(Color.rgb(74, 157, 202));//61, 138, 179
+        blue.setDiffuseColor(Color.rgb(74, 157, 202));
 
         PhongMaterial lightsaberGreen = new PhongMaterial();        //https://colorcodes.io/green/
         lightsaberGreen.setDiffuseColor(Color.rgb(94, 183, 49));
@@ -97,34 +110,110 @@ public class GolfMap extends Application implements Runnable
 
         double heightDiff = Math.abs(maxHeight - minHeight);
 
+        Sandpit sp = new Sandpit(2, 2, 3, 3);
+
+        System.out.println("x lower bound: "+ lowerBoundx +", y lower bound : "+ lowerBoundy);
+        System.out.println("x upper bound: "+ upperBoundx +", y upper bound : "+ upperBoundy);
+
         for (double i = lowerBoundx; i < upperBoundx; i = i + 0.1) {
             for (double j = lowerBoundy; j < upperBoundy; j = j + 0.1) {
+                if(!inSandpit(i, j)){
+                    Box box = new Box(0.1, 0.1, 0.1);
+                    box.translateXProperty().set(i);
+                    box.translateYProperty().set(j);
+                    box.translateZProperty().set(mathFunction.Function(i, j));
 
-                Box box = new Box(0.1, 0.1, 0.1);
-                box.translateXProperty().set(i);
-                box.translateYProperty().set(j);
-                box.translateZProperty().set(mathFunction.Function(i, j));
-
-                if (box.getTranslateZ() <= 0) {
-                    box.setMaterial(blue);
-
-                } else if (box.getTranslateZ() > 0 && box.getTranslateZ() <= heightDiff / 4) {
-                    box.setMaterial(christmasGreen);
-                } else if (box.getTranslateZ() > heightDiff / 4 && box.getTranslateZ() <= 2 * heightDiff / 4) {
-                    box.setMaterial(irishGreen);
-                } else if (box.getTranslateZ() > 2 * heightDiff / 4 && box.getTranslateZ() <= 3 * heightDiff / 4) {
-                    box.setMaterial(aquaGreen);
-                } else {
-                    box.setMaterial(lightsaberGreen);
+                    if (box.getTranslateZ() <= 0) {
+                        box.setMaterial(blue);
+                    } else if (box.getTranslateZ() > 0 && box.getTranslateZ() <= heightDiff / 4) {
+                        box.setMaterial(christmasGreen);
+                    } else if (box.getTranslateZ() > heightDiff / 4 && box.getTranslateZ() <= 2 * heightDiff / 4) {
+                        box.setMaterial(irishGreen);
+                    } else if (box.getTranslateZ() > 2 * heightDiff / 4 && box.getTranslateZ() <= 3 * heightDiff / 4) {
+                        box.setMaterial(aquaGreen);
+                    } else {
+                        box.setMaterial(lightsaberGreen);
+                    }
+                    group.getChildren().add(box);
+                }
+                else
+                {
+                    Box box = new Box(0.1, 0.1, 0.1);
+                    box.translateXProperty().set(i);
+                    box.translateYProperty().set(j);
+                    box.translateZProperty().set(mathFunction.Function(i, j));
+                    box.setMaterial(sandColor);
+                    group.getChildren().add(box);
                 }
 
-                group.getChildren().add(box);
             }
 
         }
-//        Sphere sphere = new Sphere(0.1, 1);
 
-        GolfBall.ball.setRadius(0.4);
+        PhongMaterial material = new PhongMaterial();
+        material.setDiffuseColor(Color.rgb(105, 52, 23));
+
+        PhongMaterial material2 = new PhongMaterial();
+        material2.setDiffuseColor(Color.rgb(94, 183, 49));
+
+        Tree tree = new Tree(2, 2, 0.2, 4);
+
+        for(Tree t: Tree.treeList){
+            Cylinder trunky = new Cylinder(t.radius, t.height);
+            trunky.setMaterial(material);
+            trunky.setTranslateX(t.x);
+            trunky.setTranslateY(t.y);
+            trunky.setTranslateZ(mathFunction.Function(t.x, t.y) + t.height/2);
+            trunky.setRotationAxis(Rotate.X_AXIS);
+            trunky.setRotate(90);
+            group.getChildren().add(trunky);
+
+            Sphere foliage = new Sphere();
+            foliage.setMaterial(material2);
+            foliage.setRadius(1);
+            foliage.setTranslateX(t.x);
+            foliage.setTranslateY(t.y);
+            foliage.setTranslateZ(mathFunction.Function(t.x, t.y) + t.height);
+            group.getChildren().add(foliage);
+        }
+
+        PhongMaterial material3 = new PhongMaterial();
+        material3.setDiffuseColor(Color.rgb(0, 0, 0));
+
+        PhongMaterial material4 = new PhongMaterial();
+        material4.setDiffuseColor(Color.RED);
+
+        Flag flagg = new Flag(PhysicsEngine.xt, PhysicsEngine.yt, 0.05, 2);
+
+        for(Flag f: Flag.flagList){
+
+            Cylinder flagstock = new Cylinder(f.radius, f.height);
+            flagstock.setMaterial(material3);
+            flagstock.setTranslateX(f.x);
+            flagstock.setTranslateY(f.y);
+            flagstock.setTranslateZ(mathFunction.Function(f.x, f.y) + f.height/2);
+            flagstock.setRotationAxis(Rotate.X_AXIS);
+            flagstock.setRotate(90);
+            group.getChildren().add(flagstock);
+
+            Box flag = new Box();
+            flag.setTranslateX(PhysicsEngine.xt);
+            flag.setTranslateY(PhysicsEngine.yt);
+            flag.setTranslateZ(mathFunction.Function(f.x, f.y) + f.height);
+            flag.setHeight(0.6);
+            flag.setWidth(0.1);
+            flag.setDepth(1);
+            flag.setMaterial(material4);
+
+            Rotate xRotation = new Rotate(90, Rotate.X_AXIS);
+            Rotate yRotation = new Rotate(90, Rotate.Y_AXIS);
+            flag.getTransforms().addAll(xRotation, yRotation);
+            group.getChildren().add(flag);
+        }
+
+
+//        Sphere sphere = new Sphere(0.1, 1);
+        GolfBall.ball.setRadius(GolfBall.rAdius);
         GolfBall.ball.translateXProperty().set(PhysicsEngine.x0);
         GolfBall.ball.translateYProperty().set(PhysicsEngine.y0);
         GolfBall.ball.translateZProperty().set(mathFunction.Function(PhysicsEngine.x0, PhysicsEngine.y0) + 0.45);
@@ -149,86 +238,82 @@ public class GolfMap extends Application implements Runnable
 //        group2.translateYProperty().set(70);
 //        group2.translateZProperty().set(-800);
 
-        Cylinder trunky = new Cylinder(0.2, 3);
-        PhongMaterial material = new PhongMaterial();
-        material.setDiffuseColor(Color.rgb(105, 52, 23));
-        trunky.setMaterial(material);
-        trunky.setTranslateX(4);
-        trunky.setTranslateY(3);
-        trunky.setTranslateZ(1.8);
-        trunky.setRotationAxis(Rotate.X_AXIS);
-        trunky.setRotate(90);
-        group.getChildren().add(trunky);
+        // Cylinder trunky = new Cylinder(0.2, 3);
 
-        Sphere foliage = new Sphere();
-        PhongMaterial material2 = new PhongMaterial();
-        material2.setDiffuseColor(Color.rgb(94, 183, 49));
-        foliage.setMaterial(material2);
-        foliage.setRadius(1);
-        foliage.setTranslateX(4);
-        foliage.setTranslateY(3);
-        foliage.setTranslateZ(3);
-        group.getChildren().add(foliage);
+        // trunky.setMaterial(material);
+        // trunky.setTranslateX(4);
+        // trunky.setTranslateY(3);
+        // trunky.setTranslateZ(1.8);
+        // trunky.setRotationAxis(Rotate.X_AXIS);
+        // trunky.setRotate(90);
+        // group.getChildren().add(trunky);
 
-        Cylinder trunky2 = new Cylinder(0.2, 3);
-        trunky2.setMaterial(material);
-        trunky2.setTranslateX(-4);
-        trunky2.setTranslateY(4.5);
-        trunky2.setTranslateZ(1.8);
-        trunky2.setRotationAxis(Rotate.X_AXIS);
-        trunky2.setRotate(90);
-        group.getChildren().add(trunky2);
+        // Sphere foliage = new Sphere();
 
-        Sphere foliage2 = new Sphere();
-        foliage2.setMaterial(material2);
-        foliage2.setRadius(1);
-        foliage2.setTranslateX(-4);
-        foliage2.setTranslateY(4.5);
-        foliage2.setTranslateZ(3);
-        group.getChildren().add(foliage2);
+        // foliage.setMaterial(material2);
+        // foliage.setRadius(1);
+        // foliage.setTranslateX(4);
+        // foliage.setTranslateY(3);
+        // foliage.setTranslateZ(3);
+        // group.getChildren().add(foliage);
 
-        Cylinder trunky3 = new Cylinder(0.2, 3);
-        trunky3.setMaterial(material);
-        trunky3.setTranslateX(4.5);
-        trunky3.setTranslateY(-3);
-        trunky3.setTranslateZ(1.8);
-        trunky3.setRotationAxis(Rotate.X_AXIS);
-        trunky3.setRotate(90);
-        group.getChildren().add(trunky3);
+        // Cylinder trunky2 = new Cylinder(0.2, 3);
+        // trunky2.setMaterial(material);
+        // trunky2.setTranslateX(-4);
+        // trunky2.setTranslateY(4.5);
+        // trunky2.setTranslateZ(1.8);
+        // trunky2.setRotationAxis(Rotate.X_AXIS);
+        // trunky2.setRotate(90);
+        // group.getChildren().add(trunky2);
 
-        Sphere foliage3 = new Sphere();
-        foliage3.setMaterial(material2);
-        foliage3.setRadius(1);
-        foliage3.setTranslateX(4.5);
-        foliage3.setTranslateY(-3);
-        foliage3.setTranslateZ(3);
-        group.getChildren().add(foliage3);
+        // Sphere foliage2 = new Sphere();
+        // foliage2.setMaterial(material2);
+        // foliage2.setRadius(1);
+        // foliage2.setTranslateX(-4);
+        // foliage2.setTranslateY(4.5);
+        // foliage2.setTranslateZ(3);
+        // group.getChildren().add(foliage2);
 
-        Cylinder flagstock = new Cylinder(0.05, 2);
-        PhongMaterial material3 = new PhongMaterial();
-        material3.setDiffuseColor(Color.rgb(0, 0, 0));
-        flagstock.setMaterial(material3);
-        flagstock.setTranslateX(PhysicsEngine.xt);
-        flagstock.setTranslateY(PhysicsEngine.yt);
-        flagstock.setTranslateZ(1.3);
-        flagstock.setRotationAxis(Rotate.X_AXIS);
-        flagstock.setRotate(90);
-        group.getChildren().add(flagstock);
+        // Cylinder trunky3 = new Cylinder(0.2, 3);
+        // trunky3.setMaterial(material);
+        // trunky3.setTranslateX(4.5);
+        // trunky3.setTranslateY(-3);
+        // trunky3.setTranslateZ(1.8);
+        // trunky3.setRotationAxis(Rotate.X_AXIS);
+        // trunky3.setRotate(90);
+        // group.getChildren().add(trunky3);
 
-        Box flag = new Box();
-        flag.setTranslateX(PhysicsEngine.xt);
-        flag.setTranslateY(PhysicsEngine.yt);
-        flag.setTranslateZ(2);
-        flag.setHeight(0.6);
-        flag.setWidth(0.1);
-        flag.setDepth(1);
-        PhongMaterial material4 = new PhongMaterial();
-        material4.setDiffuseColor(Color.RED);
-        flag.setMaterial(material4);
-        Rotate xRotation = new Rotate(90, Rotate.X_AXIS);
-        Rotate yRotation = new Rotate(90, Rotate.Y_AXIS);
-        flag.getTransforms().addAll(xRotation, yRotation);
-        group.getChildren().add(flag);
+        // Sphere foliage3 = new Sphere();
+        // foliage3.setMaterial(material2);
+        // foliage3.setRadius(1);
+        // foliage3.setTranslateX(4.5);
+        // foliage3.setTranslateY(-3);
+        // foliage3.setTranslateZ(3);
+        // group.getChildren().add(foliage3);
+
+        // Cylinder flagstock = new Cylinder(0.05, 2);
+
+        // flagstock.setMaterial(material3);
+        // flagstock.setTranslateX(PhysicsEngine.xt);
+        // flagstock.setTranslateY(PhysicsEngine.yt);
+        // flagstock.setTranslateZ(1.3);
+        // flagstock.setRotationAxis(Rotate.X_AXIS);
+        // flagstock.setRotate(90);
+        // group.getChildren().add(flagstock);
+
+        // Box flag = new Box();
+        // flag.setTranslateX(PhysicsEngine.xt);
+        // flag.setTranslateY(PhysicsEngine.yt);
+        // flag.setTranslateZ(2);
+        // flag.setHeight(0.6);
+        // flag.setWidth(0.1);
+        // flag.setDepth(1);
+        // flag.setMaterial(material4);
+
+        // Rotate xRotation = new Rotate(90, Rotate.X_AXIS);
+        // Rotate yRotation = new Rotate(90, Rotate.Y_AXIS);
+        // flag.getTransforms().addAll(xRotation, yRotation);
+        // group.getChildren().add(flag);
 
         Font font = new Font(25);
 
@@ -259,8 +344,89 @@ public class GolfMap extends Application implements Runnable
         primaryStage.show();
 
     }
+    public static boolean inSandpit(double x, double y){
+        for(Sandpit sand: Sandpit.sandList){
+            if(inSand(x, y, sand)){
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public static boolean inSand(double x, double y, Sandpit sand){
+        return ( (x >= sand.x && x <= sand.x + sand.length) && (y >= sand.y && y <= sand.y + sand.height) );
+    }
 
+    public static boolean inTree(double x, double y, Tree tree){
+        return ( (x >= tree.x && x <= tree.x + tree.radius) && (y >= tree.y && y <= tree.y + tree.height) );
+    }
+
+    public static boolean inTreeCircle(double x, double y, Tree tree)
+    {
+        return (GolfBall.rAdius+tree.radius>sqrt((tree.x-GolfBall.X)*(tree.x-GolfBall.X)+(tree.y-GolfBall.Y)*(tree.y-GolfBall.Y)));
+    }
+
+    public static boolean inAnyTreeCircle(double x, double y)
+    {
+        for(Tree t: Tree.treeList){
+            if(inTreeCircle(x, y, t)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean inSandCircle(double x, double y, Sandpit sand)
+    {
+        return (GolfBall.rAdius+sand.length>sqrt((sand.x-GolfBall.X)*(sand.x-GolfBall.X)+(sand.y-GolfBall.Y)*(sand.y-GolfBall.Y)));
+    }
+
+    public static boolean inSandpitCircle(double x, double y)
+    {
+        for(Sandpit sandy: Sandpit.sandList){
+            if(inSandCircle(x, y, sandy)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean inAnyTree(double x, double y){
+        for(Tree t: Tree.treeList){
+            if(inTree(x, y, t)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean inFlagCircle(double x, double y, Flag flag)
+    {
+        return (GolfBall.rAdius+flag.radius>sqrt((flag.x-GolfBall.X)*(flag.x-GolfBall.X)+(flag.y-GolfBall.Y)*(flag.y-GolfBall.Y)));
+    }
+
+    public static boolean inAnyFlagCircle(double x, double y)
+    {
+        for(Flag f: Flag.flagList){
+            if(inFlagCircle(x, y, f)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean inFlag(double x, double y, Flag flag){
+        return ( (x >= flag.x && x <= flag.x + flag.radius) && (y >= flag.y && y <= flag.y + flag.height) );
+    }
+
+    public static boolean inAnyFlag(double x, double y){
+        for(Flag f: Flag.flagList){
+            if(inFlag(x, y, f)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     private Slider prepareSlider(){
         Slider slider = new Slider();

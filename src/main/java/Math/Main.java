@@ -17,21 +17,18 @@ import java.util.List;
 
 public class Main implements Runnable{
     public static double gravity = 9.81;
-    public static double StaticFriction = 0.2;
-    public static double mass = 0.056;
     public static double friction = 0.08;
     public static double h = 0.01;
     public static Bots usedBot = new HillClimbImproved();
     public static boolean usebot = false;
 
     public static void main(String[] args) throws FileNotFoundException {
-        Bots bot[] = new Bots[3];
+        Bots[] bot = new Bots[3];
         bot[0] = new HillClimbImproved();
         bot[1] = new ParticleSwarm();
         bot[2] = new RuleBOt();
-        String result = "";
-        List<String> strings = new ArrayList<String>();
-        List<String> stringsTime = new ArrayList<String>();
+        List<String> strings = new ArrayList<>();
+        List<String> stringsTime = new ArrayList<>();
         for (int i = 0; i < bot.length; i++) {
             for (int j = 0; j < 25; j++) {
                 int average = 10;
@@ -66,9 +63,9 @@ public class Main implements Runnable{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            strings = new ArrayList<String>();
+            strings = new ArrayList<>();
 
-            stringsTime = new ArrayList<String>();
+            stringsTime = new ArrayList<>();
 
         }
 
